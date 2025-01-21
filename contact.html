@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <title>TAP 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #ffafbd, #ffc3a0);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .center-heart {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #ff4d6d;
+            transform: rotate(45deg);
+        }
+
+        .center-heart::before,
+        .center-heart::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+        }
+
+        .center-heart::before {
+            top: -100px;
+            left: 0;
+        }
+
+        .center-heart::after {
+            top: 0;
+            left: -100px;
+        }
+
+        .love {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            transform: rotate(45deg);
+            animation: fall 5s linear infinite, sway 3s ease-in-out infinite;
+        }
+
+        .love::before,
+        .love::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+        }
+
+        .love::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .love::after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(0) rotate(45deg);
+            }
+            50% {
+                transform: translateX(30px) rotate(45deg);
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <!-- NAVIGATION BAR -->
+    <div class="navbar-container">
+      <ul class="ul-navbar">
+        <li class="li-navbar">
+          <a href="index.html" class="a-navbar">YYY</a>
+        </li>
+        <li class="li-navbar">
+          <a href="about.html" class="a-navbar">TAP 1 </a>
+        </li>
+        <li class="li-navbar">
+          <a href="contact.html" class="a-navbar">TAP 2 </a>
+        </li>
+      </ul>
+    </div>
+    <!-- NAVIGATIO BAR SELESAI -->
+       
+    <!-- CONTENT 1 -->
+    <div class="center-heart"></div>
+    <script>
+        const createHeart = () => {
+            const heart = document.createElement("div");
+            heart.classList.add("love");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        };
+
+        setInterval(createHeart, 200);
+    </script>
+  </body>
+</html>
